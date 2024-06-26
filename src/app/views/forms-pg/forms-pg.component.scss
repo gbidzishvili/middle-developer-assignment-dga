@@ -1,0 +1,30 @@
+.main-container {
+  padding: 1rem;
+  .inner-container {
+    display: flex;
+    flex-direction: column;
+    .job-form {
+      padding: 1rem;
+      background-color: rgb(240, 240, 240);
+      margin-bottom: 1rem;
+      .controls {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  }
+  button {
+    margin-bottom: 1rem;
+  }
+  .small-w {
+    width: 20%;
+  }
+  .mid-w {
+    width: 50%;
+  }
+  .full-w {
+    width: 100%;
+  }
+}

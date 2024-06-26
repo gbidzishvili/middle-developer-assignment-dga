@@ -1,0 +1,87 @@
+<section class="main-container">
+  <form [formGroup]="jobForm">
+    <button
+      class="mid-w"
+      type="button"
+      mat-raised-button
+      (click)="addNewJobBtnClick()"
+    >
+      Add new Job
+    </button>
+    <article class="inner-container" formArrayName="jobs">
+      @for (job of getJobs().controls; track job; let i = $index){
+      <div class="job-form" [formGroupName]="i">
+        <button
+          class="small-w"
+          type="button"
+          mat-raised-button
+          (click)="removeJobBtnClick(i)"
+        >
+          Remove Job
+        </button>
+        <div class="controls">
+          <mat-form-field class="full-w" appearance="outline">
+            <mat-label>Fill form field</mat-label>
+            <input formControlName="companyName" matInput />
+          </mat-form-field>
+          <mat-form-field class="full-w" appearance="outline">
+            <mat-label>Fill form field</mat-label>
+            <input formControlName="companyWebPage" matInput />
+          </mat-form-field>
+          <mat-form-field class="full-w" appearance="outline">
+            <mat-label>Fill form field</mat-label>
+            <textarea formControlName="companyDescription" matInput></textarea>
+          </mat-form-field>
+        </div>
+        <button
+          class="full-w"
+          mat-raised-button
+          (click)="addNewPositionBtnClick(i)"
+        >
+          Add Position
+        </button>
+        <div formArrayName="positions" class="position-form">
+          @for (position of getPositions(i).controls; track position; let j =
+          $index){
+          <div class="job-form" [formGroupName]="j">
+            <button
+              class="small-w"
+              type="button"
+              mat-raised-button
+              (click)="removePositionBtnClick(i, j)"
+            >
+              Remove Position
+            </button>
+            <div class="controls">
+              <mat-form-field class="full-w" appearance="outline">
+                <mat-label>Fill form field</mat-label>
+                <input formControlName="positionName" matInput />
+              </mat-form-field>
+              <mat-form-field class="full-w" appearance="outline">
+                <mat-label>Fill form field</mat-label>
+                <input formControlName="positionLevel" matInput />
+              </mat-form-field>
+              <mat-form-field class="full-w" appearance="outline">
+                <mat-label>Fill form field</mat-label>
+                <textarea
+                  formControlName="positionDescription"
+                  matInput
+                ></textarea>
+              </mat-form-field>
+              <mat-form-field class="full-w" appearance="outline">
+                <mat-label>Fill form field</mat-label>
+                <input formControlName="startDate" matInput />
+              </mat-form-field>
+              <mat-form-field class="full-w" appearance="outline">
+                <mat-label>Fill form field</mat-label>
+                <input formControlName="endDate" matInput />
+              </mat-form-field>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+      }
+    </article>
+  </form>
+</section>
