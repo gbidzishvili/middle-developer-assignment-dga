@@ -10,7 +10,7 @@
     </button>
     <article class="inner-container" formArrayName="jobs">
       @for (job of getJobs().controls; track job; let i = $index){
-      <div class="job-form" [formGroupName]="i">
+      <div class="form" [formGroupName]="i">
         <button
           class="small-w"
           type="button"
@@ -21,15 +21,15 @@
         </button>
         <div class="controls">
           <mat-form-field class="full-w" appearance="outline">
-            <mat-label>Fill form field</mat-label>
+            <mat-label>companyName</mat-label>
             <input formControlName="companyName" matInput />
           </mat-form-field>
           <mat-form-field class="full-w" appearance="outline">
-            <mat-label>Fill form field</mat-label>
+            <mat-label>companyWebPage</mat-label>
             <input formControlName="companyWebPage" matInput />
           </mat-form-field>
           <mat-form-field class="full-w" appearance="outline">
-            <mat-label>Fill form field</mat-label>
+            <mat-label>companyDescription</mat-label>
             <textarea formControlName="companyDescription" matInput></textarea>
           </mat-form-field>
         </div>
@@ -43,7 +43,7 @@
         <div formArrayName="positions" class="position-form">
           @for (position of getPositions(i).controls; track position; let j =
           $index){
-          <div class="job-form" [formGroupName]="j">
+          <div class="form bg-dark" [formGroupName]="j">
             <button
               class="small-w"
               type="button"
@@ -54,28 +54,30 @@
             </button>
             <div class="controls">
               <mat-form-field class="full-w" appearance="outline">
-                <mat-label>Fill form field</mat-label>
+                <mat-label>positionName</mat-label>
                 <input formControlName="positionName" matInput />
               </mat-form-field>
               <mat-form-field class="full-w" appearance="outline">
-                <mat-label>Fill form field</mat-label>
+                <mat-label>positionLevel</mat-label>
                 <input formControlName="positionLevel" matInput />
               </mat-form-field>
               <mat-form-field class="full-w" appearance="outline">
-                <mat-label>Fill form field</mat-label>
+                <mat-label>positionDescription</mat-label>
                 <textarea
                   formControlName="positionDescription"
                   matInput
                 ></textarea>
               </mat-form-field>
-              <mat-form-field class="full-w" appearance="outline">
-                <mat-label>Fill form field</mat-label>
-                <input formControlName="startDate" matInput />
-              </mat-form-field>
-              <mat-form-field class="full-w" appearance="outline">
-                <mat-label>Fill form field</mat-label>
-                <input formControlName="endDate" matInput />
-              </mat-form-field>
+              <div class="dates">
+                <mat-form-field class="full-w" appearance="outline">
+                  <mat-label>startDate</mat-label>
+                  <input type="date" formControlName="startDate" matInput />
+                </mat-form-field>
+                <mat-form-field class="full-w" appearance="outline">
+                  <mat-label>endDate</mat-label>
+                  <input type="date" formControlName="endDate" matInput />
+                </mat-form-field>
+              </div>
             </div>
           </div>
           }
