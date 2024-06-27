@@ -6,12 +6,14 @@ import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { CustomValidationsService } from './services/custom-validations.service';
+import { CustomSelectComponent } from './components/custom-select/custom-select.component';
 
 @Component({
   selector: 'app-forms-pg',
@@ -23,6 +25,7 @@ import { CustomValidationsService } from './services/custom-validations.service'
     MatButtonModule,
     MatInputModule,
     MatIconModule,
+    CustomSelectComponent,
   ],
   templateUrl: './forms-pg.component.html',
   styleUrl: './forms-pg.component.scss',
@@ -43,9 +46,9 @@ export class FormsPgComponent {
   }
   getNewJob(): FormGroup {
     return this.fb.group({
-      companyName: new FormControl(null, [this.customValidation.maxLength]),
-      companyWebPage: new FormControl(null),
-      companyDescription: new FormControl(null),
+      companyName: [null, [this.customValidation.maxLength]],
+      companyWebPage: [null],
+      companyDescription: [null],
       positions: this.fb.array([]),
     });
   }
@@ -54,11 +57,11 @@ export class FormsPgComponent {
   }
   getNewPosition(): FormGroup {
     return this.fb.group({
-      positionName: new FormControl(null),
-      positionLevel: new FormControl(null),
-      positionDescription: new FormControl(null),
-      startDate: new FormControl(null),
-      endDate: new FormControl(null),
+      positionName: ['rame'],
+      positionLevel: [null, [Validators.required, Validators.max(100)]],
+      positionDescription: [null, Validators.required],
+      startDate: [null],
+      endDate: [null],
     });
   }
 
@@ -73,9 +76,12 @@ export class FormsPgComponent {
   }
 
   addNewPositionBtnClick(jobIndex: number): void {
-    console.log('ramee', this.jobForm.controls);
-    console.log(this.getPositions(jobIndex));
     this.getPositions(jobIndex).push(this.getNewPosition());
+    console.log(
+      'ramee',
+      (this.getPositions(0) as FormArray).at(0),
+      (this.getPositions(0) as FormArray).at(0).get('positionLevel')
+    );
   }
   removePositionBtnClick(jobIndex: number, positionIndex: number) {
     this.getPositions(jobIndex).removeAt(positionIndex);

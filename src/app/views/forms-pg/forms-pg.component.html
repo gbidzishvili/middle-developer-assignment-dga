@@ -57,10 +57,14 @@
                 <mat-label>positionName</mat-label>
                 <input formControlName="positionName" matInput />
               </mat-form-field>
-              <mat-form-field class="full-w" appearance="outline">
+              <!-- <mat-form-field class="full-w" appearance="outline">
                 <mat-label>positionLevel</mat-label>
                 <input formControlName="positionLevel" matInput />
-              </mat-form-field>
+              </mat-form-field> -->
+              <app-custom-select
+                [increment]="10"
+                formControlName="positionLevel"
+              ></app-custom-select>
               <mat-form-field class="full-w" appearance="outline">
                 <mat-label>positionDescription</mat-label>
                 <textarea
