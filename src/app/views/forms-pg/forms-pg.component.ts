@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { CustomValidationsService } from './services/custom-validations.service';
 
 @Component({
   selector: 'app-forms-pg',
@@ -29,7 +30,10 @@ import { MatIconModule } from '@angular/material/icon';
 export class FormsPgComponent {
   jobForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private customValidation: CustomValidationsService
+  ) {
     this.jobForm = this.fb.group({
       jobs: this.fb.array([]),
     });
@@ -39,7 +43,7 @@ export class FormsPgComponent {
   }
   getNewJob(): FormGroup {
     return this.fb.group({
-      companyName: new FormControl(null),
+      companyName: new FormControl(null, [this.customValidation.maxLength]),
       companyWebPage: new FormControl(null),
       companyDescription: new FormControl(null),
       positions: this.fb.array([]),
@@ -69,6 +73,7 @@ export class FormsPgComponent {
   }
 
   addNewPositionBtnClick(jobIndex: number): void {
+    console.log('ramee', this.jobForm.controls);
     console.log(this.getPositions(jobIndex));
     this.getPositions(jobIndex).push(this.getNewPosition());
   }
