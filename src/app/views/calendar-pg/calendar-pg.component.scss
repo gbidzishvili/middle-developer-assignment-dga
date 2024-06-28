@@ -1,20 +1,20 @@
 #calendar {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 1rem;
-  max-width: 40rem;
+  gap: 10px;
+  max-width: 400px;
   background-color: white;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #calendar div {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
-  border-radius: 0.5rem;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 #calendar .header {
@@ -32,4 +32,9 @@
 
 #calendar .weekend {
   background-color: #ff9999;
+}
+
+#calendar .prev-month,
+#calendar .next-month {
+  color: #a9a9a9;
 }
