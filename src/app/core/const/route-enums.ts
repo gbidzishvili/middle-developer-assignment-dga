@@ -5,4 +5,5 @@ export enum AppUrlEnum {
   MOVIES = 'movies',
   CalendarView = 'calendar',
   PIPE = 'pipe',
+  STRINGCOMPARISON = 'string-comparison',
 }

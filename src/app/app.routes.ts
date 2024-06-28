@@ -24,5 +24,12 @@ export const routes: Routes = [
         (m) => m.CalendarPgComponent
       ),
   },
+  {
+    path: `${AppUrlEnum.STRINGCOMPARISON}`,
+    loadComponent: () =>
+      import(
+        './views/string-comparison-pg/string-comparison-pg.component'
+      ).then((m) => m.StringComparisonPgComponent),
+  },
   { path: '**', pathMatch: 'full', redirectTo: `/${AppUrlEnum.FORM}` },
 ];
