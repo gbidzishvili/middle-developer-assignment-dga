@@ -17,7 +17,7 @@ export class CalendarPgComponent implements OnInit {
   prevMonthDays: number[];
   nextMonthDays: number[];
   weekends: number[] = [0, 6]; // Sunday (0) and Saturday (6) as weekends
-
+  currentMonthName!: string;
   constructor() {
     const today = new Date();
     this.currentMonth = today.getMonth();
@@ -27,6 +27,7 @@ export class CalendarPgComponent implements OnInit {
     this.firstDay = new Date(this.currentYear, this.currentMonth, 1).getDay();
     this.prevMonthDays = this.getPreviousMonthDays(this.firstDay);
     this.nextMonthDays = this.getNextMonthDays();
+    this.currentMonthName = this.getMonthName(this.currentMonth);
   }
 
   ngOnInit(): void {}
@@ -74,5 +75,9 @@ export class CalendarPgComponent implements OnInit {
   isWeekend(day: number, offset: number = 0): boolean {
     const dayOfWeek = (this.firstDay + day + offset - 1) % 7;
     return this.weekends.includes(dayOfWeek);
+  }
+  getMonthName(month: number): string {
+    const date = new Date(this.currentYear, month, 1);
+    return date.toLocaleString('default', { month: 'long' });
   }
 }

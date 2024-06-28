@@ -21,6 +21,13 @@
   font-weight: bold;
 }
 
+#calendar .title {
+  grid-column: span 7;
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
 #calendar .current-day {
   background-color: #ffcc00;
   color: white;
