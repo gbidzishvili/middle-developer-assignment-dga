@@ -1,13 +1,21 @@
 import { Routes } from '@angular/router';
-import { AppUrl } from './core/const/route-enums';
+import { AppUrlEnum } from './core/const/route-enums';
 
 export const routes: Routes = [
-  { path: '', redirectTo: `/${AppUrl.FORM}`, pathMatch: 'full' },
+  { path: '', redirectTo: `/${AppUrlEnum.FORM}`, pathMatch: 'full' },
   {
-    path: `${AppUrl.FORM}`,
+    path: `${AppUrlEnum.FORM}`,
     loadComponent: () =>
       import('./views/forms-pg/forms-pg.component').then(
         (m) => m.FormsPgComponent
       ),
   },
+  {
+    path: `${AppUrlEnum.PIPE}`,
+    loadComponent: () =>
+      import('./views/pipe-pg/pipe-pg.component').then(
+        (m) => m.PipePgComponent
+      ),
+  },
+  { path: '**', pathMatch: 'full', redirectTo: `/${AppUrlEnum.FORM}` },
 ];
