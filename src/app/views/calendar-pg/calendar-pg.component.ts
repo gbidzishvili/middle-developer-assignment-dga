@@ -62,7 +62,8 @@ export class CalendarPgComponent implements OnInit {
   getNextMonthDays(): number[] {
     const totalDaysDisplayed =
       this.prevMonthDays.length + this.daysInMonth.length;
-    const nextMonthDaysCount = 42 - totalDaysDisplayed; // 42 to ensure 6 rows of 7 days each
+    length = this.prevMonthDays.length + this.daysInMonth.length > 35 ? 42 : 35;
+    const nextMonthDaysCount = length - totalDaysDisplayed; // 42 to ensure 6 rows of 7 days each
     const nextMonthDays: number[] = [];
 
     for (let i = 1; i <= nextMonthDaysCount; i++) {
