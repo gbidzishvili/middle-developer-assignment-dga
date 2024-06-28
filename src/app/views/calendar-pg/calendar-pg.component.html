@@ -5,13 +5,32 @@
   >
     {{ day }}
   </div>
-  <div *ngFor="let empty of [].constructor(firstDay)"></div>
+  <div
+    *ngFor="let day of prevMonthDays"
+    class="prev-month"
+    [ngClass]="{
+      weekend: isWeekend(day, prevMonthDays.length - 2),
+      weekday: !isWeekend(day, prevMonthDays.length - 2)
+    }"
+  >
+    {{ day }}
+  </div>
   <div
     *ngFor="let day of daysInMonth"
     [ngClass]="{
       'current-day': day === currentDay,
       weekday: !isWeekend(day),
       weekend: isWeekend(day)
+    }"
+  >
+    {{ day }}
+  </div>
+  <div
+    *ngFor="let day of nextMonthDays"
+    class="next-month"
+    [ngClass]="{
+      weekend: isWeekend(day, daysInMonth.length),
+      weekday: !isWeekend(day, daysInMonth.length)
     }"
   >
     {{ day }}
