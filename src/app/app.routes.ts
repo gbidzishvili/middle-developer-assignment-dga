@@ -17,5 +17,12 @@ export const routes: Routes = [
         (m) => m.PipePgComponent
       ),
   },
+  {
+    path: `${AppUrlEnum.CalendarView}`,
+    loadComponent: () =>
+      import('./views/calendar-pg/calendar-pg.component').then(
+        (m) => m.CalendarPgComponent
+      ),
+  },
   { path: '**', pathMatch: 'full', redirectTo: `/${AppUrlEnum.FORM}` },
 ];
