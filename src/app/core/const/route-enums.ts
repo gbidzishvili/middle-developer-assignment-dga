@@ -1,6 +1,6 @@
 import { CalendarView } from '@angular/material/datepicker/testing';
 
-export enum AppUrl {
+export enum AppUrlEnum {
   FORM = 'forms',
   MOVIES = 'movies',
   CalendarView = 'calendar',
