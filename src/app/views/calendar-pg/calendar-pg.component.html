@@ -1,0 +1,19 @@
+<div id="calendar">
+  <div
+    *ngFor="let day of ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']"
+    class="header"
+  >
+    {{ day }}
+  </div>
+  <div *ngFor="let empty of [].constructor(firstDay)"></div>
+  <div
+    *ngFor="let day of daysInMonth"
+    [ngClass]="{
+      'current-day': day === currentDay,
+      weekday: !isWeekend(day),
+      weekend: isWeekend(day)
+    }"
+  >
+    {{ day }}
+  </div>
+</div>
