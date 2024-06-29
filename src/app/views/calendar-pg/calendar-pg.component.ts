@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-calendar-pg',
@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './calendar-pg.component.html',
   styleUrl: './calendar-pg.component.scss',
 })
-export class CalendarPgComponent implements OnInit {
+export class CalendarPgComponent {
   currentMonth: number;
   currentYear: number;
   currentDay: number;
@@ -16,7 +16,7 @@ export class CalendarPgComponent implements OnInit {
   firstDay: number;
   prevMonthDays: number[];
   nextMonthDays: number[];
-  weekends: number[] = [0, 6]; // Sunday (0) and Saturday (6) as weekends
+  weekends: number[] = [0, 6];
   currentMonthName!: string;
   constructor() {
     const today = new Date();
@@ -29,9 +29,6 @@ export class CalendarPgComponent implements OnInit {
     this.nextMonthDays = this.getNextMonthDays();
     this.currentMonthName = this.getMonthName(this.currentMonth);
   }
-
-  ngOnInit(): void {}
-
   getDaysInMonth(month: number, year: number): number[] {
     const date = new Date(year, month + 1, 0);
     const days: number[] = [];
@@ -62,8 +59,8 @@ export class CalendarPgComponent implements OnInit {
   getNextMonthDays(): number[] {
     const totalDaysDisplayed =
       this.prevMonthDays.length + this.daysInMonth.length;
-    length = this.prevMonthDays.length + this.daysInMonth.length > 35 ? 42 : 35;
-    const nextMonthDaysCount = length - totalDaysDisplayed; // 42 to ensure 6 rows of 7 days each
+    const nextMonthDaysCount =
+      (totalDaysDisplayed > 35 ? 42 : 35) - totalDaysDisplayed;
     const nextMonthDays: number[] = [];
 
     for (let i = 1; i <= nextMonthDaysCount; i++) {
