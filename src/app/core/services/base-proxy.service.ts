@@ -10,7 +10,7 @@ export class BaseProxyService {
   get<T>(apiUrl: string, filters?: Object): Observable<T> {
     return this.http
       .get<T>(apiUrl + this.queryParams(filters))
-      .pipe(shareReplay(), retry(1)) as Observable<T>;
+      .pipe(shareReplay()) as Observable<T>;
   }
   queryParams(filters: Object | undefined): string {
     if (filters) {
