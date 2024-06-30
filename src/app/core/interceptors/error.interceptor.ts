@@ -9,10 +9,8 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
     catchError((error: HttpErrorResponse) => {
       let errorMsg = '';
       if (error.error instanceof ErrorEvent) {
-        console.log('client side error');
         errorMsg = `Error: ${error.error.message}`;
       } else {
-        console.log('server side error');
         errorMsg = `Error Code: ${error.status}, Message: ${error.message}`;
       }
       notificationService.showError(errorMsg);

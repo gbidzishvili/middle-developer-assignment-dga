@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, retry, distinctUntilChanged, shareReplay } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BaseProxyService {
-  constructor(private http: HttpClient) {}
+  http = inject(HttpClient);
   get<T>(apiUrl: string, filters?: Object): Observable<T> {
     return this.http
       .get<T>(apiUrl + this.queryParams(filters))

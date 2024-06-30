@@ -1,12 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import {
   FormArray,
   FormBuilder,
-  FormControl,
   FormGroup,
   ReactiveFormsModule,
-  Validators,
 } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
@@ -30,13 +28,15 @@ import { CustomSelectComponent } from './components/custom-select/custom-select.
   templateUrl: './forms-pg.component.html',
   styleUrl: './forms-pg.component.scss',
 })
-export class FormsPgComponent {
+export class FormsPgComponent implements OnInit {
   jobForm!: FormGroup;
+  fb = inject(FormBuilder);
+  customValidation = inject(CustomValidationsService);
 
-  constructor(
-    private fb: FormBuilder,
-    private customValidation: CustomValidationsService
-  ) {
+  ngOnInit(): void {
+    this.initializeForm();
+  }
+  initializeForm() {
     this.jobForm = this.fb.group({
       jobs: this.fb.array([]),
     });
@@ -77,11 +77,6 @@ export class FormsPgComponent {
 
   addNewPositionBtnClick(jobIndex: number): void {
     this.getPositions(jobIndex).push(this.getNewPosition());
-    console.log(
-      'ramee',
-      (this.getPositions(0) as FormArray).at(0),
-      (this.getPositions(0) as FormArray).at(0).get('positionLevel')
-    );
   }
   removePositionBtnClick(jobIndex: number, positionIndex: number) {
     this.getPositions(jobIndex).removeAt(positionIndex);

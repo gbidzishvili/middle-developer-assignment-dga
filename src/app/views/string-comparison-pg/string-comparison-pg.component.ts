@@ -18,8 +18,8 @@ export class StringComparisonPgComponent {
   comparedByLevenshteinSimilarity = new BehaviorSubject<
     { str1: string; str2: string; percentage: number }[]
   >([]);
+
   ngOnInit(): void {
-    // WAY 1
     this.comparedByLevenshteinSimilarity.next(
       this.strings.map((v) => ({
         str1: this.stringToCompare,
@@ -32,11 +32,8 @@ export class StringComparisonPgComponent {
           ) * 100,
       }))
     );
-    // Way 2
     this.calculateMatches();
   }
-
-  ngOnChanges(): void {}
 
   calculateMatches(): void {
     this.comparedByNpmPackage.next(
@@ -49,13 +46,11 @@ export class StringComparisonPgComponent {
         ),
       }))
     );
-    console.log(this.comparedByNpmPackage);
   }
 
   calculateLevenshteinDistance(str1: string, str2: string): number {
     const matrix = [];
 
-    // Initialize the matrix
     for (let i = 0; i <= str1.length; i++) {
       matrix[i] = [i];
     }
@@ -63,18 +58,14 @@ export class StringComparisonPgComponent {
       matrix[0][j] = j;
     }
 
-    // Compute the Levenshtein distance
     for (let i = 1; i <= str1.length; i++) {
       for (let j = 1; j <= str2.length; j++) {
         if (str1.charAt(i - 1) === str2.charAt(j - 1)) {
           matrix[i][j] = matrix[i - 1][j - 1];
         } else {
           matrix[i][j] = Math.min(
-            matrix[i - 1][j - 1] + 1, // substitution
-            Math.min(
-              matrix[i][j - 1] + 1, // insertion
-              matrix[i - 1][j] + 1
-            ) // deletion
+            matrix[i - 1][j - 1] + 1,
+            Math.min(matrix[i][j - 1] + 1, matrix[i - 1][j] + 1)
           );
         }
       }

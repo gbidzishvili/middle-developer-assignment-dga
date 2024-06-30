@@ -15,6 +15,6 @@
     <mat-card-content>{{ movie.title | truncate : 25 }} </mat-card-content>
   </mat-card>
   } } @if(moviesList.length == 0){
-  <div class="movies-not-found" [appErrorState]="moviesList"></div>
+  <div [appErrorState]="moviesList" class="movies-not-found"></div>
   }
 </div>

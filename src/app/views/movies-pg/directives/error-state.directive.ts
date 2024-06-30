@@ -1,10 +1,4 @@
-import {
-  Directive,
-  ElementRef,
-  Input,
-  Renderer2,
-  SimpleChanges,
-} from '@angular/core';
+import { Directive, ElementRef, Input, Renderer2, inject } from '@angular/core';
 
 @Directive({
   selector: '[appErrorState]',
@@ -12,9 +6,8 @@ import {
 })
 export class ErrorStateDirective {
   @Input('appErrorState') movies: any;
-
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
-
+  el = inject(ElementRef);
+  renderer = inject(Renderer2);
   ngOnChanges() {
     if (this.movies?.length === 0) {
       this.renderer.setStyle(this.el.nativeElement, 'display', 'block');

@@ -5,8 +5,6 @@ import { AbstractControl, ValidatorFn } from '@angular/forms';
   providedIn: 'root',
 })
 export class CustomValidationsService {
-  constructor() {}
-
   maxLength(control: AbstractControl): { [key: string]: any } | null {
     if (control.value && control.value.length > 20) {
       return { maxLengthError: true };

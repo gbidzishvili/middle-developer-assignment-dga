@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
@@ -31,9 +31,9 @@ import { ErrorStateDirective } from './directives/error-state.directive';
   styleUrl: './movies-pg.component.scss',
 })
 export class MoviesPgComponent {
+  baseProxySrv = inject(BaseProxyService);
   search = new FormControl('');
   movies!: Observable<any>;
-  constructor(private baseProxySrv: BaseProxyService) {}
   onKeydown(event: KeyboardEvent) {
     if (event.key === 'Enter') {
       this.fetchMovies();
@@ -49,7 +49,6 @@ export class MoviesPgComponent {
           }
           return response.results;
         }),
-        tap((v: any) => console.log(v)),
         catchError(() => {
           return of([]);
         })
