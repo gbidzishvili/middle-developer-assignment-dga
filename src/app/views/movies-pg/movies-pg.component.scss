@@ -1,0 +1,56 @@
+.search {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  mat-form-field {
+    width: 60%;
+  }
+  button {
+    width: 60%;
+    margin-bottom: 2rem;
+  }
+}
+.table {
+  display: grid;
+  gap: 1rem;
+  padding: 2rem;
+  justify-items: center;
+
+  /* Small screens: 1 column */
+  grid-template-columns: repeat(1, 1fr);
+
+  @media (min-width: 768px) {
+    /* Medium screens: 2 columns */
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    /* Large screens: 3 columns */
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: 1200px) {
+    /* Extra large screens: 4 columns */
+    grid-template-columns: repeat(4, 1fr);
+  }
+  mat-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    width: 18rem;
+    mat-card-content {
+      padding-bottom: 0;
+    }
+  }
+  img {
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+
+  div.movies-not-found {
+    margin: 0 auto;
+    font-size: 1.5rem;
+    color: #9494a2;
+  }
+}

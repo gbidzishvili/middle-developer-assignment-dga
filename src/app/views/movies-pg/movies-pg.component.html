@@ -1,7 +1,25 @@
-<mat-form-field class="example-full-width" appearance="outline">
-  <mat-label>Search Movie </mat-label>
-  <input matInput />
-</mat-form-field>
-<button mat-raised-button matSuffix="search">
-  search... <mat-icon>search</mat-icon>
-</button>
+<div class="search">
+  <mat-form-field class="example-full-width" appearance="outline">
+    <mat-label>Search Movie </mat-label>
+    <input
+      (change)="onInputValueChange($event)"
+      [formControl]="search"
+      matInput
+    />
+  </mat-form-field>
+  <button mat-raised-button matSuffix="search" (click)="onSubmitBtnClick()">
+    search... <mat-icon>search</mat-icon>
+  </button>
+</div>
+<div class="table" *ngIf="movies | async as moviesList">
+  @for ( movie of moviesList; track movie){ @if (movie.image?.url) {
+  <mat-card appearance="outlined">
+    <img mat-card-xl-image [src]="movie.image?.url" />
+    <mat-card-subtitle>{{ movie.titleType }}</mat-card-subtitle>
+    <mat-card-content>{{ movie.title | truncate : 25 }} </mat-card-content>
+  </mat-card>
+  } }
+  <ng-content *ngIf="moviesList.length == 0">
+    <div class="movies-not-found" [appErrorState]="moviesList"></div>
+  </ng-content>
+</div>
