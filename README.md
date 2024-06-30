@@ -36,9 +36,6 @@ A step-by-step series of examples that tell you how to get a development environ
 
 ## Application structure
 
-- implemented lazy loading
-- SCSS is used for Styles
-
 ![structure image](./src/assets/images/diagram.png "structure image")
 
 ## Libraries
@@ -52,3 +49,5 @@ A step-by-step series of examples that tell you how to get a development environ
 Giorgi Bidzishvili
 
 ## License
+
+[MIT License](LICENSE)
