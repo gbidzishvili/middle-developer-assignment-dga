@@ -71,9 +71,13 @@ export class CalendarPgComponent {
   }
 
   isWeekend(day: number, offset: number = 0): boolean {
-    const dayOfWeek = (this.firstDay + day + offset - 1) % 7;
+    let dayOfWeek =
+      offset < 0
+        ? (this.firstDay + offset) % 7
+        : (this.firstDay + day + offset - 1) % 7;
     return this.weekends.includes(dayOfWeek);
   }
+
   getMonthName(month: number): string {
     const date = new Date(this.currentYear, month, 1);
     return date.toLocaleString('default', { month: 'long' });
