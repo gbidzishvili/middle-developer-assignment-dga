@@ -1,6 +1,16 @@
 <div>
-  <h2>Comparison Results</h2>
-  <div *ngFor="let match of matches">
-    <p>{{ match.value }}: {{ match.percentage.toFixed(2) }}%</p>
+  <h2>Solution1: LevenshteinSimmilarity algorithm Results</h2>
+  <div *ngFor="let match of comparedByLevenshteinSimilarity | async">
+    <p>
+      {{ match.str1 }} — {{ match.str2 }}: {{ match.percentage.toFixed(2) }}%
+    </p>
+  </div>
+</div>
+<div>
+  <h2>Solution2: Npm Package Results</h2>
+  <div *ngFor="let match of comparedByNpmPackage | async">
+    <p>
+      {{ match.str1 }} — {{ match.str2 }}: {{ match.percentage.toFixed(2) }}%
+    </p>
   </div>
 </div>
