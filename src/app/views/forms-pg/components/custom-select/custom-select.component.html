@@ -1,7 +1,12 @@
-<div class="choose-quantity">
-  <mat-icon (click)="onRemove()" color="primary"
-    >indeterminate_check_box</mat-icon
+<mat-form-field appearance="fill" class="full-width">
+  <mat-label>Custom Form Control: Select Level</mat-label>
+  <mat-select
+    [value]="value"
+    (selectionChange)="selectOption($event.value)"
+    [disabled]="isDisabled"
   >
-  <div class="quantity">{{ quantity }}</div>
-  <mat-icon (click)="onAdd()" color="primary">add_box</mat-icon>
-</div>
+    <mat-option *ngFor="let option of options" [value]="option">
+      {{ option }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
