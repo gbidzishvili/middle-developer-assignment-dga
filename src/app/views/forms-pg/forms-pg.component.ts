@@ -58,8 +58,8 @@ export class FormsPgComponent {
   getNewPosition(): FormGroup {
     return this.fb.group({
       positionName: ['rame'],
-      positionLevel: [null, [Validators.required, Validators.max(100)]],
-      positionDescription: [null, Validators.required],
+      positionLevel: [null],
+      positionDescription: [null],
       startDate: [null],
       endDate: [null],
     });

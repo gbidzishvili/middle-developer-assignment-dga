@@ -18,6 +18,16 @@
     }
     .form.bg-dark {
       background-color: rgba(214, 223, 231, 0.87);
+      .controls {
+        .dates {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          mat-form-field {
+            width: 48%;
+          }
+        }
+      }
     }
   }
   button {
