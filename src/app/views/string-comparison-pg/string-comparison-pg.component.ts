@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { Component } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { stringSimilarity } from 'string-similarity-js';
 @Component({
   selector: 'app-string-comparison-pg',

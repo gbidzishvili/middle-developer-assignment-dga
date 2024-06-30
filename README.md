@@ -2,26 +2,53 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.4.
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-## Code scaffolding
+### Prerequisites
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+What things you need to install the software and how to install them:
 
-## Build
+```bash
+node -v // Check if Node.js is installed
+npm -v // Check if npm is installed
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Installation
 
-## Running unit tests
+A step-by-step series of examples that tell you how to get a development environment running:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. **Clone the repository**
 
-## Running end-to-end tests
+   ```bash
+   git clone https://github.com/gbidzishvili/middle-developer-assignment-dga.git
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+   ```
 
-## Further help
+2. **Navigate to the project directory**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+`cd middle-developer-assignment-dga`
+
+3. **Install dependencies**
+
+`npm install`
+
+## Application structure
+
+- implemented lazy loading
+- SCSS is used for Styles
+
+![structure image](./src/assets/images/diagram.png "structure image")
+
+## Libraries
+
+- angular material
+- rxjs
+- string-similarity-js
+
+#Author
+
+Giorgi Bidzishvili
+
+## License
