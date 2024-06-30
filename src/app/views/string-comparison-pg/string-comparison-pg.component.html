@@ -1,18 +1,13 @@
 <div>
   <h2>Solution1: LevenshteinSimmilarity algorithm Results</h2>
   @for( match of comparedByLevenshteinSimilarity| async; track match){
-
   <p>{{ match.str1 }} — {{ match.str2 }}: {{ match.percentage.toFixed(2) }}%</p>
-
   }
 </div>
 
 <div>
   <h2>Solution2: Npm Package Results</h2>
-
   @for( match of (comparedByNpmPackage | async); track match){
-
   <p>{{ match.str1 }} — {{ match.str2 }}: {{ match.percentage.toFixed(2) }}%</p>
-
   }
 </div>
