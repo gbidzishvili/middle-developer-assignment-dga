@@ -1,13 +1,9 @@
 <div class="search">
   <mat-form-field class="example-full-width" appearance="outline">
     <mat-label>Search Movie </mat-label>
-    <input
-      (change)="onInputValueChange($event)"
-      [formControl]="search"
-      matInput
-    />
+    <input (keydown)="onKeydown($event)" [formControl]="search" matInput />
   </mat-form-field>
-  <button mat-raised-button matSuffix="search" (click)="onSubmitBtnClick()">
+  <button mat-raised-button matSuffix="search" (click)="fetchMovies()">
     search... <mat-icon>search</mat-icon>
   </button>
 </div>

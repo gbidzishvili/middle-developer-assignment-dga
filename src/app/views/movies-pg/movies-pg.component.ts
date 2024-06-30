@@ -30,30 +30,27 @@ import { ErrorStateDirective } from './directives/error-state.directive';
   templateUrl: './movies-pg.component.html',
   styleUrl: './movies-pg.component.scss',
 })
-export class MoviesPgComponent implements OnInit {
+export class MoviesPgComponent {
   search = new FormControl('');
   movies!: Observable<any>;
   constructor(private baseProxySrv: BaseProxyService) {}
-  ngOnInit(): void {}
-  onInputValueChange(event: Event) {
-    console.log((event?.target as HTMLInputElement).value);
+  onKeydown(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.fetchMovies();
+    }
   }
-  onSubmitBtnClick() {
+  fetchMovies() {
     this.movies = this.baseProxySrv
       .get(movies_API_URL, { title: `${this.search.value}&amp` })
       .pipe(
         map((response: any) => {
           if (!response.results) {
-            // Handle the case where 'results' is not present
             throw new Error('No results found');
           }
           return response.results;
         }),
         tap((v: any) => console.log(v)),
-        catchError((error) => {
-          // Handle API errors
-          // this.errorState = true;
-          console.log('inside error');
+        catchError(() => {
           return of([]);
         })
       );
