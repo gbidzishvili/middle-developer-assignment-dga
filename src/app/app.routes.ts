@@ -11,6 +11,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: `${AppUrlEnum.MOVIES}`,
+    loadComponent: () =>
+      import('./views/movies-pg/movies-pg.component').then(
+        (m) => m.MoviesPgComponent
+      ),
+  },
+  {
     path: `${AppUrlEnum.PIPE}`,
     loadComponent: () =>
       import('./views/pipe-pg/pipe-pg.component').then(
