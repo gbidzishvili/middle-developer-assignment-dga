@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { Movie } from './models/movie.model';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { ErrorStateDirective } from './directives/error-state.directive';
+import { ImageFallbackDirective } from './directives/image-fallback.directive';
 
 @Component({
   selector: 'app-movies-pg',
@@ -26,6 +27,7 @@ import { ErrorStateDirective } from './directives/error-state.directive';
     ReactiveFormsModule,
     TruncatePipe,
     ErrorStateDirective,
+    ImageFallbackDirective,
   ],
   templateUrl: './movies-pg.component.html',
   styleUrl: './movies-pg.component.scss',

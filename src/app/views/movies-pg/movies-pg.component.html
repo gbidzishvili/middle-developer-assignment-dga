@@ -8,13 +8,18 @@
   </button>
 </div>
 <div class="table" *ngIf="movies | async as moviesList">
-  @for ( movie of moviesList; track movie){ @if (movie.image?.url) {
+  @for ( movie of moviesList; track movie){
   <mat-card appearance="outlined">
-    <img mat-card-xl-image [src]="movie.image?.url" />
+    <img
+      mat-card-xl-image
+      [src]="movie.image?.url"
+      alt="{{ movie.title }}"
+      appImageFallback
+    />
     <mat-card-subtitle>{{ movie.titleType }}</mat-card-subtitle>
     <mat-card-content>{{ movie.title | truncate : 25 }} </mat-card-content>
   </mat-card>
-  } } @if(moviesList.length == 0){
+  } @if(moviesList.length == 0){
   <div [appErrorState]="moviesList" class="movies-not-found"></div>
   }
 </div>
