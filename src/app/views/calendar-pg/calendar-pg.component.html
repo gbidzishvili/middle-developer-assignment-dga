@@ -1,13 +1,12 @@
 <div id="calendar">
   <div class="title">{{ currentMonthName }} {{ currentYear }}</div>
-  <div
-    *ngFor="let day of ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']"
-    class="header"
-  >
+  @for(day of ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];track day; let i
+  = $index){
+  <div class="header">
     {{ day }}
   </div>
+  } @for(day of prevMonthDays;track day; let i = $index){
   <div
-    *ngFor="let day of prevMonthDays"
     class="prev-month"
     [ngClass]="{
       weekend: isWeekend(
@@ -22,8 +21,8 @@
   >
     {{ day }}
   </div>
+  } @for(day of daysInMonth;track day; let i = $index){
   <div
-    *ngFor="let day of daysInMonth"
     [ngClass]="{
       'current-day': day === currentDay,
       weekday: !isWeekend(day),
@@ -32,8 +31,8 @@
   >
     {{ day }}
   </div>
+  } @for(day of nextMonthDays;track day; let i = $index){
   <div
-    *ngFor="let day of nextMonthDays"
     class="next-month"
     [ngClass]="{
       weekend: isWeekend(day, daysInMonth.length),
@@ -42,4 +41,5 @@
   >
     {{ day }}
   </div>
+  }
 </div>

@@ -14,8 +14,7 @@
     <mat-card-subtitle>{{ movie.titleType }}</mat-card-subtitle>
     <mat-card-content>{{ movie.title | truncate : 25 }} </mat-card-content>
   </mat-card>
-  } }
-  <ng-content *ngIf="moviesList.length == 0">
-    <div class="movies-not-found" [appErrorState]="moviesList"></div>
-  </ng-content>
+  } } @if(moviesList.length == 0){
+  <div class="movies-not-found" [appErrorState]="moviesList"></div>
+  }
 </div>
