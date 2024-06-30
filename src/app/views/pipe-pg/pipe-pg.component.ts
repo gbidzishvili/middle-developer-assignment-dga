@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CustomDatePipe } from './pipes/custom-date.pipe';
 import { DatePipe } from '@angular/common';
 
@@ -9,8 +9,4 @@ import { DatePipe } from '@angular/common';
   templateUrl: './pipe-pg.component.html',
   styleUrl: './pipe-pg.component.scss',
 })
-export class PipePgComponent implements OnInit {
-  ngOnInit(): void {
-    console.log('rame');
-  }
-}
+export class PipePgComponent {}
