@@ -46,9 +46,12 @@ export class FormsPgComponent implements OnInit {
   }
   getNewJob(): FormGroup {
     return this.fb.group({
-      companyName: [null, [this.customValidation.maxLength]],
-      companyWebPage: [null],
-      companyDescription: [null],
+      companyName: [null, [this.customValidation.noNumericCharsValidator]],
+      companyWebPage: [null, [this.customValidation.urlPatternValidator]],
+      companyDescription: [
+        null,
+        [this.customValidation.maxLengthValidator(200)],
+      ],
       positions: this.fb.array([]),
     });
   }
@@ -57,9 +60,12 @@ export class FormsPgComponent implements OnInit {
   }
   getNewPosition(): FormGroup {
     return this.fb.group({
-      positionName: ['rame'],
+      positionName: [null, [this.customValidation.noNumericCharsValidator]],
       positionLevel: [null],
-      positionDescription: [null],
+      positionDescription: [
+        null,
+        [this.customValidation.maxLengthValidator(20)],
+      ],
       startDate: [null],
       endDate: [null],
     });
